@@ -65,7 +65,10 @@ $blog_posts = $QUERY->fetchall(pdo::FETCH_ASSOC);
                 </div>
             </div>
             <div class="row">
-                <footer>This is a footer</footer>
+                <div class="col-md-12">
+                    <footer>This is a footer</footer>
+                    <a href="admin/index.php">Admin panel</a>
+                </div>                
             </div>                
         </div>        
     </body>
