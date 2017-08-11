@@ -1,5 +1,4 @@
 <?php
-require_once '../config1.php';
 
 $cadSQL = "SELECT * FROM BLOG_POST ORDER BY ID DESC";
 $QUERY = $pdo_conn->PREPARE($cadSQL);

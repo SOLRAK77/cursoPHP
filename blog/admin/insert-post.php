@@ -1,5 +1,5 @@
 <?php
-require_once '../config1.php';
+
 $result = FALSE;
 
 if (!empty($_POST))

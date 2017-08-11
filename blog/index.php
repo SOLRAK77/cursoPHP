@@ -1,5 +1,5 @@
 <?php
-require_once 'config1.php';
+//require_once 'config1.php';
 
 $cadSQL = "SELECT * FROM BLOG_POST ORDER BY ID DESC";
 $QUERY = $pdo_conn->PREPARE($cadSQL);
@@ -68,6 +68,8 @@ $blog_posts = $QUERY->fetchall(pdo::FETCH_ASSOC);
                 <div class="col-md-12">
                     <footer>This is a footer</footer>
                     <a href="admin/index.php">Admin panel</a>
+                    <br>
+                    <br>
                 </div>                
             </div>                
         </div>        
