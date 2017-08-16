@@ -1,12 +1,12 @@
 <?php
 //require_once 'config1.php';
-
+/*
 $cadSQL = "SELECT * FROM BLOG_POST ORDER BY ID DESC";
 $QUERY = $pdo_conn->PREPARE($cadSQL);
 $QUERY->EXECUTE();
 
 $blog_posts = $QUERY->fetchall(pdo::FETCH_ASSOC);
-
+*/
 ?>
 <html>
     <head>
@@ -37,27 +37,7 @@ $blog_posts = $QUERY->fetchall(pdo::FETCH_ASSOC);
                         echo '</div>';
                         echo '</div>';
                     }
-                     ?>
-                    <div class="blog-spot">
-                        <h2>Blog title</h2>
-                        <p> enero 2017 <a href=>Carlos</a></p>
-                        <div class="blog-post-img">
-                            <image src="./img/images.jpeg" alt=""></image>
-                        </div>
-                        <div class="blog-post-content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores debitis magni similique veritatis voluptatum alias neque, nulla, sapiente nobis. Rerum placeat impedit consequuntur omnis non laborum dolores iste qui blanditiis!
-                        </div>
-                    </div>   
-                    <div class="blog-spot">
-                        <h2>Blog title</h2>
-                        <p> enero 2017 <a href=>Carlos</a></p>
-                        <div class="blog-post-img">
-                            <image src="./img/images.jpeg" alt=""></image>
-                        </div>
-                        <div class="blog-post-content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores debitis magni similique veritatis voluptatum alias neque, nulla, sapiente nobis. Rerum placeat impedit consequuntur omnis non laborum dolores iste qui blanditiis!
-                        </div>
-                    </div>                       
+                     ?>                              
                 </div>
                 <div class="col-md-4">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. In deserunt inventore id impedit quam hic at sed est cum, commodi, odit sit, obcaecati aperiam. Modi, quam facere quasi reiciendis quidem!
@@ -67,7 +47,7 @@ $blog_posts = $QUERY->fetchall(pdo::FETCH_ASSOC);
             <div class="row">
                 <div class="col-md-12">
                     <footer>This is a footer</footer>
-                    <a href="admin/index.php">Admin panel</a>
+                    <a href="<?php echo BASE_URL;?>/admin/">Admin panel</a>
                     <br>
                     <br>
                 </div>                

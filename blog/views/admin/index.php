@@ -1,12 +1,3 @@
-<?php
-
-$cadSQL = "SELECT * FROM BLOG_POST ORDER BY ID DESC";
-$QUERY = $pdo_conn->PREPARE($cadSQL);
-$QUERY->EXECUTE();
-
-$blog_posts = $QUERY->fetchall(pdo::FETCH_ASSOC);
-
-?>
 <html>
     <head>
         <title>Blog with Platzi </title>
@@ -22,8 +13,9 @@ $blog_posts = $QUERY->fetchall(pdo::FETCH_ASSOC);
             </div>
             <div class="row">
                 <div class="col-md-8">
+                    <H2>Admin Panel</H2> 
                     <ul>
-                    <li><a href="post.php">Manage post</a></li>
+                    <li><a href="<?php echo BASE_URL;?>admin/post">Manage post</a></li>
                     </ul>                 
                 </div>
                 <div class="col-md-4">
@@ -34,7 +26,7 @@ $blog_posts = $QUERY->fetchall(pdo::FETCH_ASSOC);
             <div class="row">
                 <div class="col-md-12">
                     <footer>This is a footer</footer>
-                    <a href="admin/index.php">Admin panel</a>
+                    <a href="<?php echo BASE_URL;?>">Admin panel</a>
                 </div>                
             </div>                
         </div>        

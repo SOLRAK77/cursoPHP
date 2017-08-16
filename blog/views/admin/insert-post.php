@@ -1,12 +1,3 @@
-<?php
-
-$cadSQL = "SELECT * FROM BLOG_POST ORDER BY ID DESC";
-$QUERY = $pdo_conn->PREPARE($cadSQL);
-$QUERY->EXECUTE();
-
-$blog_posts = $QUERY->fetchall(pdo::FETCH_ASSOC);
-
-?>
 <html>
     <head>
         <title>Blog with Platzi </title>
@@ -22,26 +13,22 @@ $blog_posts = $QUERY->fetchall(pdo::FETCH_ASSOC);
             </div>
             <div class="row">
                 <div class="col-md-8">
-                    <h2>POST</h2>
-                <a class="btn btn-primary" href="insert-post.php">Add new post</a>
-                    <br>
-                    <table class="table">
-                        <tr>
-                            <th>TITULO</th>
-                            <th>EDIT</th>
-                            <th>DELETE</th>
-                        </tr>
-                        <?php
-                            foreach ($blog_posts as $itemBlog )
-                            {
-                               echo '<tr>';
-                               echo '<td>'.$itemBlog['TITULO'].'</td>';
-                               echo '<td>EDIT</td>';
-                               echo '<td>DELETE</td>';
-                               echo '</tr>';
-                            }
-                        ?>        
-                    </table>                                                     
+                    <h2>NEW POST</h2>
+                    <a class="btn btn-default" href="<?php echo BASE_URL?>admin/post">BACK</a>
+                      <?php
+                        if (isset($result) && $result){
+                        echo '<div class="alert alert-success">Registro insertado</div>';
+                        }
+                    ?>
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="title">TITULO</label>
+                            <input class="form-control" type="text" name="title" id="title">
+                        </div>  
+                        <textarea class="form-control" id="inContenido" name="inContenido" rows="5"></textarea>                      
+                        <br>
+                        <input class="btn btn-primary" type="submit" value="submit"></input>
+                    </form>                                         
                 </div>
                 <div class="col-md-4">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. In deserunt inventore id impedit quam hic at sed est cum, commodi, odit sit, obcaecati aperiam. Modi, quam facere quasi reiciendis quidem!
