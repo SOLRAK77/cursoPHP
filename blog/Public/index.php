@@ -36,56 +36,25 @@ switch($route){
 }
 */
 use Phroute\Phroute\RouteCollector;
-
 $router = new RouteCollector();
-
 //echo $router;
 //die();
 
+/*
 $router->get('/admin',function() use ($pdo_conn){
     return render('../views/admin/index.php');
 });
+*/
 
-$router->get('/admin/post',function() use ($pdo_conn){
-    $cadSQL = "SELECT * FROM BLOG_POST ORDER BY ID DESC";
-    $QUERY = $pdo_conn->PREPARE($cadSQL);
-    $QUERY->EXECUTE();    
-    $blog_posts = $QUERY->fetchall(pdo::FETCH_ASSOC);
-    
-    return render('../views/admin/post.php',['blog_posts' => $blog_posts]);
-});
-
-$router->get('admin/post/create',function(){
-    return render('../views/admin/insert-post.php');
-});
-
+/*
 $router->post('admin/post/create',function() use ($pdo_conn){
-    $result = FALSE;
     
-        $sTitle = $_POST['title'];
-        $sContent = $_POST['inContenido'];
-    
-        try{
-        $casSql = "INSERT INTO BLOG_POST (TITULO,CONTENIDO ) VALUES (:title, :content)";
-        $query= $pdo_conn->prepare($casSql);
-    
-        $result= $query->execute(
-            [
-                'title'=>$sTitle,
-                'content'=> $sContent 
-            ]
-        );
-    
-        }
-        catch(Exception $er)
-        {
-            echo 'Erro:' . $er->getMessage();
-        }
-    return render('../views/admin/insert-post.php',['result'=>$result]);
 });
+*/
 
+/*
 $router->get('/',function() use ($pdo_conn){
-    //return 'Route /';
+    /*return 'Route /';
     $cadSQL = "SELECT * FROM BLOG_POST ORDER BY ID DESC";
     $QUERY = $pdo_conn->PREPARE($cadSQL);
     $QUERY->EXECUTE();
@@ -94,6 +63,10 @@ $router->get('/',function() use ($pdo_conn){
     return render('../views/index.php',['blog_posts' => $blog_posts]);
     //include ;
 });
+*/
+$router->controller('/', app\controllers\IndexController::class);
+$router->controller('/admin', app\controllers\admin\IndexController::class);
+$router->controller('/admin/post',app\controllers\admin\PostController::class);
 
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
 
