@@ -21,7 +21,7 @@
             "phpunit/phpunit": "*",
             "satooshi/php-coveralls": "dev-master"
         },
-        "time": "2015-07-22T20:46:43+00:00",
+        "time": "2015-07-22 20:46:43",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -66,7 +66,7 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2017-06-14T15:44:48+00:00",
+        "time": "2017-06-14 15:44:48",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -130,7 +130,7 @@
             "symfony/debug": "~2.7",
             "symfony/phpunit-bridge": "~3.3@dev"
         },
-        "time": "2017-06-07T18:47:58+00:00",
+        "time": "2017-06-07 18:47:58",
         "type": "library",
         "extra": {
             "branch-alias": {
