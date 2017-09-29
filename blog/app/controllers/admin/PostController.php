@@ -2,10 +2,12 @@
 
 namespace app\controllers\admin;
 use \app\controllers\BaseController;
+use \app\models\blogSposts;
 
 class PostController extends BaseController{
 
     public function getIndex(){
+        /*
         global $pdo_conn;
 
         //** admin/post  or admin/post/index
@@ -13,6 +15,8 @@ class PostController extends BaseController{
         $QUERY = $pdo_conn->PREPARE($cadSQL);
         $QUERY->EXECUTE();    
         $blog_posts = $QUERY->fetchall(\PDO::FETCH_ASSOC);        
+        */
+        $blog_posts = blogSposts::all();
         return $this->muestra('/admin/post.twig',['blog_posts' => $blog_posts]);
     }
 
@@ -22,13 +26,20 @@ class PostController extends BaseController{
     }
 
     public function postCreate(){
-        global $pdo_conn;
+        //global $pdo_conn;
         $result = FALSE;
         
             $sTitle = $_POST['title'];
             $sContent = $_POST['inContenido'];
         
             try{
+                $blogPost = new blogSposts([
+                    'TITULO'=>$sTitle,
+                    'CONTENIDO'=> $sContent 
+                ]);
+                $blogPost->save();
+                $result = true;                
+            /*
             $casSql = "INSERT INTO BLOG_POST (TITULO,CONTENIDO ) VALUES (:title, :content)";
             $query= $pdo_conn->prepare($casSql);
         
@@ -38,6 +49,7 @@ class PostController extends BaseController{
                     'content'=> $sContent 
                 ]
             );
+            */
         
             }
             catch(Exception $er)

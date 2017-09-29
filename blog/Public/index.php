@@ -7,12 +7,28 @@ error_reporting(E_ALL);
 require_once '../vendor/autoload.php';
 
 //Esta pagina es mi Front controler
-include_once '../config1.php';
+//cacp: 28-09-2016
+//include_once '../config1.php';
 
 $baseDir = str_replace(basename( $_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_NAME']);
 $baseURL = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $baseDir;
 define('BASE_URL',$baseURL);
 
+use Illuminate\Database\Capsule\Manager as Capsule;
+
+$capsule = new Capsule;
+
+$capsule->addConnection([
+    'driver'    => 'sqlsrv',
+    'host'      => 'CARLOS',
+    'database'  => 'CURSOPHP',
+    'username'  => 'sa',
+    'password'  => 'sa',
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => '',
+]);
+/*
 function render($fileName, $params = [])
 {
     ob_start();
@@ -20,6 +36,11 @@ function render($fileName, $params = [])
     include $fileName;
     return ob_get_clean();
 }
+*/
+// Make this Capsule instance available globally via static methods... (optional)
+$capsule->setAsGlobal();
+// Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
+$capsule->bootEloquent();
 
 $route = $_GET['route'] ?? '/';
 /*
