@@ -3,6 +3,8 @@
 namespace app\controllers\admin;
 use \app\controllers\BaseController;
 use \app\models\blogSposts;
+use \Sirius\Validation\Validator;
+
 
 class PostController extends BaseController{
 
@@ -28,17 +30,30 @@ class PostController extends BaseController{
     public function postCreate(){
         //global $pdo_conn;
         $result = FALSE;
-        
-            $sTitle = $_POST['title'];
-            $sContent = $_POST['inContenido'];
-        
-            try{
-                $blogPost = new blogSposts([
-                    'TITULO'=>$sTitle,
-                    'CONTENIDO'=> $sContent 
-                ]);
-                $blogPost->save();
-                $result = true;                
+        $errors=[];
+
+        try{
+            $validador = new Validator();
+            $validador->add('title','required');
+            $validador->add('inContenido','required');
+            if($validador->validate($_POST))
+                {
+                    $sTitle = $_POST['title'];
+                    $sContent = $_POST['inContenido'];
+
+                    $blogPost = new blogSposts([
+                        'TITULO'=>$sTitle,
+                        'CONTENIDO'=> $sContent 
+                    ]);
+                    $blogPost->save();
+                    $result = true;
+                }
+                else
+                {
+                    $errors = $validador->getMessages();
+                }
+
+
             /*
             $casSql = "INSERT INTO BLOG_POST (TITULO,CONTENIDO ) VALUES (:title, :content)";
             $query= $pdo_conn->prepare($casSql);

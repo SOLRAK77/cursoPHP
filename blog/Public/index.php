@@ -14,16 +14,18 @@ $baseDir = str_replace(basename( $_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_NA
 $baseURL = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $baseDir;
 define('BASE_URL',$baseURL);
 
-use Illuminate\Database\Capsule\Manager as Capsule;
+$dotenv = new \Dotenv\Dotenv(__DIR__,'/../.env');
+$dotenv->load();
 
+use Illuminate\Database\Capsule\Manager as Capsule;
 $capsule = new Capsule;
 
 $capsule->addConnection([
     'driver'    => 'sqlsrv',
-    'host'      => 'CARLOS',
-    'database'  => 'CURSOPHP',
-    'username'  => 'sa',
-    'password'  => 'sa',
+    'host'      => getenv('BD_HOST'),
+    'database'  => getenv('DB_NAME'),
+    'username'  => getenv('DB_USER'),
+    'password'  => getenv('DB_PASS'),
     'charset'   => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix'    => '',
