@@ -90,6 +90,7 @@ $router->get('/',function() use ($pdo_conn){
 $router->controller('/', app\controllers\IndexController::class);
 $router->controller('/admin', app\controllers\admin\IndexController::class);
 $router->controller('/admin/post',app\controllers\admin\PostController::class);
+$router->controller('/admin/users',app\controllers\admin\UserController::class);
 
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
 

@@ -71,6 +71,6 @@ class PostController extends BaseController{
             {
                 echo 'Erro:' . $er->getMessage();
             }
-        return $this->muestra('/admin/insert-post.twig',['result'=>$result]);
+        return $this->muestra('/admin/insert-post.twig',['result'=>$result,'errors'=>$errors]);
     }
 }
